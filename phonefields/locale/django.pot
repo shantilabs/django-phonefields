@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 18:21+0400\n"
+"POT-Creation-Date: 2014-05-12 18:18+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,32 +16,30 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:12
 msgid "Uzbekistan"
-msgstr "Узбекистан"
+msgstr ""
 
 #: __init__.py:13
 msgid "Kyrgyzstan"
-msgstr "Кыргистан"
+msgstr ""
 
 #: __init__.py:14
 msgid "Georgia"
-msgstr "Грузия"
+msgstr ""
 
 #: __init__.py:15
 msgid "Azerbaijan"
-msgstr "Азербайджан"
+msgstr ""
 
 #: __init__.py:16
 msgid "Turkmenistan"
-msgstr "Туркменистан"
+msgstr ""
 
 #: __init__.py:17
 msgid "Tajikistan"
-msgstr "Таджикистан"
+msgstr ""
 
 #: __init__.py:18
 msgid "Nepal"
@@ -377,11 +375,11 @@ msgstr ""
 
 #: __init__.py:101
 msgid "Estonia"
-msgstr "Эстония"
+msgstr ""
 
 #: __init__.py:102
 msgid "Latvia"
-msgstr "Латвия"
+msgstr ""
 
 #: __init__.py:103
 msgid "Lithuania"
@@ -389,47 +387,47 @@ msgstr ""
 
 #: __init__.py:104
 msgid "Bulgaria"
-msgstr "Болгания"
+msgstr ""
 
 #: __init__.py:105
 msgid "Finland"
-msgstr "Финляндия"
+msgstr ""
 
 #: __init__.py:106
 msgid "Cyprus"
-msgstr "Кипр"
+msgstr ""
 
 #: __init__.py:107
 msgid "Malta"
-msgstr "Мальта"
+msgstr ""
 
 #: __init__.py:108
 msgid "Albania"
-msgstr "Албания"
+msgstr ""
 
 #: __init__.py:109
 msgid "Iceland"
-msgstr "Исландия"
+msgstr ""
 
 #: __init__.py:110
 msgid "Ireland"
-msgstr "Ирландия"
+msgstr ""
 
 #: __init__.py:111
 msgid "Luxembourg"
-msgstr "Люксенбург"
+msgstr ""
 
 #: __init__.py:112
 msgid "Portugal"
-msgstr "Португалия"
+msgstr ""
 
 #: __init__.py:113
 msgid "Gibraltar"
-msgstr "Гибралтар"
+msgstr ""
 
 #: __init__.py:114
 msgid "Greenland"
-msgstr "Гренландия"
+msgstr ""
 
 #: __init__.py:115
 msgid "Faroe Islands"
@@ -669,11 +667,11 @@ msgstr ""
 
 #: __init__.py:174
 msgid "Pakistan"
-msgstr "Пакистан"
+msgstr ""
 
 #: __init__.py:175
 msgid "India"
-msgstr "Индия"
+msgstr ""
 
 #: __init__.py:176
 msgid "Turkey"
@@ -681,23 +679,23 @@ msgstr ""
 
 #: __init__.py:177
 msgid "China"
-msgstr "Китай"
+msgstr ""
 
 #: __init__.py:178
 msgid "Vietnam"
-msgstr "Вьетнам"
+msgstr ""
 
 #: __init__.py:179
 msgid "South Korea"
-msgstr "Южная Корея"
+msgstr ""
 
 #: __init__.py:180
 msgid "Japan"
-msgstr "Японий"
+msgstr ""
 
 #: __init__.py:181
 msgid "Thailand"
-msgstr "Тайланд"
+msgstr ""
 
 #: __init__.py:182
 msgid "Singapore"
@@ -717,7 +715,7 @@ msgstr ""
 
 #: __init__.py:186
 msgid "Australia"
-msgstr "Австралия"
+msgstr ""
 
 #: __init__.py:187
 msgid "Christmas Island"
@@ -737,23 +735,23 @@ msgstr ""
 
 #: __init__.py:191
 msgid "Colombia"
-msgstr "Колумбия"
+msgstr ""
 
 #: __init__.py:192
 msgid "Chile"
-msgstr "Чили"
+msgstr ""
 
 #: __init__.py:193
 msgid "Brazil"
-msgstr "Бразилия"
+msgstr ""
 
 #: __init__.py:194
 msgid "Argentina"
-msgstr "Аргентина"
+msgstr ""
 
 #: __init__.py:195
 msgid "Cuba"
-msgstr "Куба"
+msgstr ""
 
 #: __init__.py:196
 msgid "Mexico"
@@ -761,15 +759,15 @@ msgstr ""
 
 #: __init__.py:197
 msgid "Peru"
-msgstr "Перу"
+msgstr ""
 
 #: __init__.py:198
 msgid "Germany"
-msgstr "Германия"
+msgstr ""
 
 #: __init__.py:199
 msgid "Poland"
-msgstr "Польша"
+msgstr ""
 
 #: __init__.py:200
 msgid "Norway"
@@ -969,8 +967,8 @@ msgstr ""
 
 #: __init__.py:303
 msgid "Unsupported country code"
-msgstr "Неизвестный код страны"
+msgstr ""
 
 #: __init__.py:307
 msgid "Incorrect phone"
-msgstr "Некорректный номер телефона"
+msgstr ""

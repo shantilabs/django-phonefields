@@ -6,8 +6,11 @@ setup(
     version='1.0',
     author='Maxim Oransky',
     author_email='maxim.oransky@gmail.com',
+    url='https://github.com/shantilabs/django-phonefields',
     packages=[
         'phonefields'
     ],
-    url='https://github.com/shantilabs/django-phonefields',
+    package_data={
+        'phonefields': ['locale/ru/LC_MESSAGES/*'],
+    },
 )

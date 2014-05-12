@@ -1,0 +1,5 @@
+django_phonefields.egg-info/PKG-INFO
+django_phonefields.egg-info/SOURCES.txt
+django_phonefields.egg-info/dependency_links.txt
+django_phonefields.egg-info/top_level.txt
+phonefields/__init__.py
