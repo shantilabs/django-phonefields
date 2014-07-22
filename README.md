@@ -2,22 +2,25 @@ django-phonefields
 ==================
 
 Install:
-
+```
     pip install -e git+https://github.com/shantilabs/django-phonefields#egg=phonefields
+```
 
 Add to installed apps (for localization support):
-
+```python
     INSTALLED_APPS = (
         # ....
         'phonefields',
     )
+```
 
 Usage:
-
+```python
     from phonefields import FullPhoneDbField, FullPhoneFormField
+```
 
 Optional settings:
-
+```python
     # allow russian and ukrainian numbers only
     AVAILABLE_PHONE_COUNTRY_CODES = ('7', '380')
 
@@ -26,3 +29,4 @@ Optional settings:
 
     # default value for numbers without country code
     DEFAULT_PHONE_COUNTRY_CODE = '7'
+```
