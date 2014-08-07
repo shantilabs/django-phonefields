@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 import re
 
+
+if __name__ == '__main__':
+    from django.conf import settings
+    if not settings.configured:
+        settings.configure()
+
+
 from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -268,18 +275,21 @@ class FullPhoneFormField(forms.CharField):
     max_phone_length = 10
 
     def clean(self, value):
-        u"""
-        >>> FullPhoneFormField().clean('9161234567')
-        u'+79161234567'
-        >>> FullPhoneFormField().clean('89161234567')
-        u'+79161234567'
-        >>> FullPhoneFormField().clean('+7(916)1234567')
-        u'+79161234567'
-        >>> FullPhoneFormField().clean('(916)1234567')
-        u'+79161234567'
-        >>> FullPhoneFormField().clean(u' 8(916)-123-45-67 ')
-        u'+79161234567'
         """
+        >>> str(FullPhoneFormField().clean(u'79254525702'))
+        '+79254525702'
+        >>> str(FullPhoneFormField().clean('9161234567'))
+        '+79161234567'
+        >>> str(FullPhoneFormField().clean('89161234567'))
+        '+79161234567'
+        >>> str(FullPhoneFormField().clean('+7(916)1234567'))
+        '+79161234567'
+        >>> str(FullPhoneFormField().clean('(916)1234567'))
+        '+79161234567'
+        >>> str(FullPhoneFormField().clean(u' 8(916)-123-45-67 '))
+        '+79161234567'
+        """
+
         if value:
             value = value.strip()
 
@@ -290,7 +300,10 @@ class FullPhoneFormField(forms.CharField):
             value = value.lstrip('+')
             value = re.sub('[^\d]', '', value)
 
-            if not has_country_code:
+            if value.startswith(self.default_code):
+                phone = value[len(self.default_code):]
+                code = self.default_code
+            elif not has_country_code:
                 phone = value[1:] if value.startswith('8') else value
                 code = self.default_code
             else:
@@ -329,3 +342,8 @@ class FullPhoneDbField(models.CharField):
         args, kwargs = introspector(models.CharField(*self._options[0], **self._options[1]))
         kwargs['max_length'] = self._max_length
         return field_class, args, kwargs
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
