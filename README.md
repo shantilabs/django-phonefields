@@ -19,6 +19,8 @@ Usage:
     from phonefields import FullPhoneDbField, FullPhoneFormField
 ```
 
+Example: https://github.com/shantilabs/django-phonefields/blob/master/phonefields/__init__.py#L278
+
 Optional settings:
 ```python
     # allow russian and ukrainian numbers only
