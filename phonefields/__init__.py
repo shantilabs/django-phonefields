@@ -273,6 +273,7 @@ class FullPhoneFormField(forms.CharField):
     default_code = getattr(settings, 'DEFAULT_PHONE_COUNTRY_CODE', '7')
     min_phone_length = 8
     max_phone_length = 10
+    max_full_phone_length = 15
 
     def clean(self, value):
         """
@@ -288,8 +289,9 @@ class FullPhoneFormField(forms.CharField):
         '+79161234567'
         >>> str(FullPhoneFormField().clean(u' 8(916)-123-45-67 '))
         '+79161234567'
+        >>> str(FullPhoneFormField().clean(u'+37412345678'))
+        '+37412345678'
         """
-
         if value:
             value = value.strip()
 
@@ -300,11 +302,14 @@ class FullPhoneFormField(forms.CharField):
             value = value.lstrip('+')
             value = re.sub('[^\d]', '', value)
 
+            if len(value) > self.max_full_phone_length:
+                raise ValidationError(ugettext('Incorrect phone'))
+
             if value.startswith(self.default_code):
                 phone = value[len(self.default_code):]
                 code = self.default_code
-            elif not has_country_code:
-                phone = value[1:] if value.startswith('8') else value
+            elif not has_country_code and value.startswith('8'):
+                phone = value[1:]
                 code = self.default_code
             else:
                 for c in self.available_codes:
