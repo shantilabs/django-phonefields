@@ -302,14 +302,14 @@ class FullPhoneFormField(forms.CharField):
             value = value.lstrip('+')
             value = re.sub('[^\d]', '', value)
 
-            if len(value) > self.max_full_phone_length:
+            if not value or len(value) > self.max_full_phone_length:
                 raise ValidationError(ugettext('Incorrect phone'))
 
             if value.startswith(self.default_code):
                 phone = value[len(self.default_code):]
                 code = self.default_code
-            elif not has_country_code and value.startswith('8'):
-                phone = value[1:]
+            elif not has_country_code and (value.startswith('8') or value.startswith('9')):
+                phone = value[1:] if value.startswith('8') else value
                 code = self.default_code
             else:
                 for c in self.available_codes:
