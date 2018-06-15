@@ -1,0 +1,8 @@
+*.egg-info
+*.pyc
+.cache
+.tox
+MANIFEST
+__pycache__
+.pytest_cache
+.idea

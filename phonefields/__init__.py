@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 import re
 
-
-if __name__ == '__main__':
-    from django.conf import settings
-    if not settings.configured:
-        settings.configure()
-
-
 from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.deconstruct import deconstructible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 country_data = (
@@ -259,95 +254,116 @@ all_codes = sorted(set(str(code) for code, _, __ in country_data if code),
                    key=lambda v: (-len(v), int(v)))
 
 
-class FullPhoneFormField(forms.CharField):
-    u"""
-    >>> class Form(forms.Form):
-    ...     phone = FullPhoneFormField()
-    >>> Form({'phone': '            '}).is_valid()
-    False
-    >>> Form({'phone': ' 8 923  987 22 11  '}).is_valid()
-    True
-    """
-    available_codes = getattr(settings, 'AVAILABLE_PHONE_COUNTRY_CODES', None) or all_codes
-    default_code = getattr(settings, 'DEFAULT_PHONE_COUNTRY_CODE', '7')
-    min_phone_length = 8
-    max_phone_length = 10
-    max_full_phone_length = 15
+def clean_phone(value, available_codes=None, default_code=None,
+                min_length=8, max_length=10, max_full_phone_length=15):
+    if default_code is None:
+        default_code = getattr(settings, 'DEFAULT_PHONE_COUNTRY_CODE', '7')
 
-    def clean(self, value):
-        """
-        >>> str(FullPhoneFormField().clean(u'79254525702'))
-        '+79254525702'
-        >>> str(FullPhoneFormField().clean('9161234567'))
-        '+79161234567'
-        >>> str(FullPhoneFormField().clean('89161234567'))
-        '+79161234567'
-        >>> str(FullPhoneFormField().clean('+7(916)1234567'))
-        '+79161234567'
-        >>> str(FullPhoneFormField().clean('(916)1234567'))
-        '+79161234567'
-        >>> str(FullPhoneFormField().clean(u' 8(916)-123-45-67 '))
-        '+79161234567'
-        >>> str(FullPhoneFormField().clean(u'+37412345678'))
-        '+37412345678'
-        """
-        if value:
-            value = value.strip()
+    if available_codes is None:
+        available_codes = getattr(settings, 'AVAILABLE_PHONE_COUNTRY_CODES', None) or all_codes
 
-            phone = None
-            code = None
+    value = force_text(value)
+    value = value.strip()
 
-            has_country_code = value.startswith('+')
-            value = value.lstrip('+')
-            value = re.sub('[^\d]', '', value)
+    phone = None
+    code = None
 
-            if not value or len(value) > self.max_full_phone_length:
-                raise ValidationError(ugettext('Incorrect phone'))
+    has_country_code = value.startswith('+')
+    value = value.lstrip('+')
+    value = re.sub(r'[^\d]', '', value)
 
-            if value.startswith(self.default_code):
-                phone = value[len(self.default_code):]
-                code = self.default_code
-            elif not has_country_code and (value.startswith('8') or value.startswith('9')):
-                phone = value[1:] if value.startswith('8') else value
-                code = self.default_code
-            else:
-                for c in self.available_codes:
-                    if value.startswith(c):
-                        phone = value[len(c):]
-                        code = c
-                        break
-                if not phone:
-                    raise ValidationError(ugettext('Unsupported country code'))
+    if not value or len(value) > max_full_phone_length:
+        raise ValidationError(ugettext('Incorrect phone'))
 
-            length = len(phone)
-            if not (self.min_phone_length <= length <= self.max_phone_length):
-                raise ValidationError(ugettext('Incorrect phone'))
+    if value.startswith(default_code):
+        phone = value[len(default_code):]
+        code = default_code
+    elif not has_country_code and (value.startswith('8') or value.startswith('9')):
+        phone = value[1:] if value.startswith('8') else value
+        code = default_code
+    else:
+        for c in available_codes:
+            if value.startswith(c):
+                phone = value[len(c):]
+                code = c
+                break
+        if not phone:
+            raise ValidationError(ugettext('Unsupported country code'))
 
-            value = '+' + code + phone
-        return super(FullPhoneFormField, self).clean(value)
+    length = len(phone)
+    if not (min_length <= length <= max_length):
+        raise ValidationError(ugettext('Incorrect phone'))
+
+    return '+' + code + phone
 
 
-class FullPhoneDbField(models.CharField):
-    _max_length = 20
-    _options = None
+class PhoneFieldValidator(object):
+    OPTIONS = ('available_codes', 'default_code',
+               'min_phone_length', 'max_phone_length',
+               'max_full_phone_length')
+
+    def __init__(self, **options):
+        self.options = options
+
+    def __call__(self, value):
+        clean_phone(value, **self.options)
+
+
+class _PhoneValidatorMixin(object):
+    default_validators = [PhoneFieldValidator()]
+    validator_options = {}
 
     def __init__(self, *args, **kwargs):
-        kwargs['max_length'] = self._max_length
-        self._options = (args, kwargs)
+        self.validator_options = {
+            field: kwargs.pop(field)
+            for field in PhoneFieldValidator.OPTIONS
+            if field in kwargs
+        }
+
+        if self.validator_options:
+            self.default_validators = [
+                PhoneFieldValidator(**self.validator_options)
+            ]
+
+        super(_PhoneValidatorMixin, self).__init__(*args, **kwargs)
+
+    def clean(self, value):
+        return clean_phone(value, **self.validator_options)
+
+
+class FullPhoneFormField(_PhoneValidatorMixin, forms.CharField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('max_length', 20)
+        super(FullPhoneFormField, self).__init__(*args, **kwargs)
+
+
+# @deconstructible
+class FullPhoneDbField(_PhoneValidatorMixin, models.CharField):
+    _max_length = 20
+    default_validators = [PhoneFieldValidator()]
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('max_length', self._max_length)
+
         super(FullPhoneDbField, self).__init__(*args, **kwargs)
+
+    def pre_save(self, model_instance, add):
+        value = getattr(model_instance, self.attname)
+        value = clean_phone(value, **self.validator_options)
+        setattr(model_instance, self.attname, value)
+
+        return super(FullPhoneDbField, self).pre_save(model_instance, add)
 
     def formfield(self, **kwargs):
         kwargs['form_class'] = FullPhoneFormField
         return super(FullPhoneDbField, self).formfield(**kwargs)
 
-    def south_field_triple(self):
-        from south.modelsinspector import introspector
-        field_class = 'django.db.models.fields.CharField'
-        args, kwargs = introspector(models.CharField(*self._options[0], **self._options[1]))
-        kwargs['max_length'] = self._max_length
-        return field_class, args, kwargs
+    def deconstruct(self):
+        name, path, args, kwargs = super(FullPhoneDbField, self).deconstruct()
 
+        if kwargs['max_length'] == self._max_length:
+            kwargs.pop('max_length')
 
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+        kwargs.update(self.validator_options)
+
+        return name, path, args, kwargs
