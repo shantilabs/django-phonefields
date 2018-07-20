@@ -255,7 +255,8 @@ all_codes = sorted(set(str(code) for code, _, __ in country_data if code),
 
 
 def clean_phone(value, available_codes=None, default_code=None,
-                min_length=8, max_length=10, max_full_phone_length=15):
+                min_length=8, max_length=10, max_full_phone_length=15,
+                required=True):
     if default_code is None:
         default_code = getattr(settings, 'DEFAULT_PHONE_COUNTRY_CODE', '7')
 
@@ -264,6 +265,9 @@ def clean_phone(value, available_codes=None, default_code=None,
 
     value = force_text(value)
     value = value.strip()
+
+    if not value and not required:
+        return value
 
     phone = None
     code = None
@@ -300,7 +304,7 @@ def clean_phone(value, available_codes=None, default_code=None,
 class PhoneFieldValidator(object):
     OPTIONS = ('available_codes', 'default_code',
                'min_phone_length', 'max_phone_length',
-               'max_full_phone_length')
+               'max_full_phone_length', 'required')
 
     def __init__(self, **options):
         self.options = options
