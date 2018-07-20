@@ -57,3 +57,9 @@ Optional settings:
     # default value for numbers without country code
     DEFAULT_PHONE_COUNTRY_CODE = '7'
 ```
+
+Running tests:
+```bash
+pip install tox
+tox
+```
