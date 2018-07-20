@@ -35,6 +35,11 @@ def test_form():
     assert Form({'phone': '          '}).is_valid() is False
 
     assert Form({'phone': '8(923 999-22-33 '}).is_valid()
+    assert Form({'phone': '+7 999 233-11-22'}).is_valid()
+
+    class OptionalForm(forms.Form):
+        phone = FullPhoneFormField(required=False)
+    assert OptionalForm({'phone': ''}).is_valid()
 
 
 @pytest.mark.django_db
