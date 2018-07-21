@@ -263,11 +263,11 @@ def clean_phone(value, available_codes=None, default_code=None,
     if available_codes is None:
         available_codes = getattr(settings, 'AVAILABLE_PHONE_COUNTRY_CODES', None) or all_codes
 
-    value = force_text(value)
-    value = value.strip()
-
     if not value and not required:
         return value
+
+    value = force_text(value)
+    value = value.strip()
 
     phone = None
     code = None

@@ -52,6 +52,7 @@ def test_optional(required, should_be_valid):
         phone = FullPhoneFormField(required=required)
 
     assert OptionalForm({'phone': ''}).is_valid() == should_be_valid
+    assert OptionalForm({}).is_valid() == should_be_valid
 
 
 @pytest.mark.django_db
