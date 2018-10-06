@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from . import forms
@@ -26,7 +27,10 @@ class FullPhoneField(models.CharField):
         value = getattr(model_instance, self.attname)
         for v in self.validators:
             if isinstance(v, PhoneFieldValidator):
-                value = v(value)
+                try:
+                    value = v(value)
+                except ValidationError:
+                    pass
         setattr(model_instance, self.attname, value)
         return super().pre_save(model_instance, add)
 
