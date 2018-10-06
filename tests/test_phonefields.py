@@ -3,7 +3,7 @@ from django.forms import forms
 
 from phonefields import FullPhoneFormField, FullPhoneDbField
 
-from test_app.models import SampleModelUSA, SampleModel
+from test_app.models import SampleModelUSA, SampleModel, SampleModelBlank
 
 
 @pytest.mark.parametrize('value,expected', (
@@ -75,6 +75,15 @@ def test_model_field_with_options():
     obj = SampleModelUSA.objects.create(phone='8923 111 22 33')
 
     assert obj.phone == '+19231112233'
+
+
+@pytest.mark.django_db
+def test_model_blank_field():
+    """
+    Check blank field
+    """
+    obj = SampleModelBlank.objects.create(phone=' ')
+    assert obj.phone == ''
 
 
 @pytest.mark.django_db

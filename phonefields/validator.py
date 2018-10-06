@@ -8,40 +8,32 @@ from django.utils.translation import ugettext
 from .codes import all_codes
 
 
-class PhoneFieldValidator(object):
-    OPTIONS = ('available_codes', 'default_code',
-               'min_phone_length', 'max_phone_length',
-               'max_full_phone_length', 'required')
+class PhoneFieldValidator:
+    OPTIONS = (
+        'available_codes',
+        'default_code',
+        'min_phone_length',
+        'max_phone_length',
+        'max_full_phone_length',
+        'required',
+    )
 
     def __init__(self, **options):
         self.options = options
 
     def __call__(self, value):
-        clean_phone(value, **self.options)
+        return clean_phone(value, **self.options)
 
 
-class PhoneValidatorMixin(object):
-    default_validators = [PhoneFieldValidator()]
-    validator_options = {}
-
-    def __init__(self, *args, **kwargs):
-        self.validator_options = {
-            field: kwargs.pop(field)
-            for field in PhoneFieldValidator.OPTIONS
-            if field in kwargs
-        }
-
-        if self.validator_options:
-            self.default_validators = [
-                PhoneFieldValidator(**self.validator_options)
-            ]
-
-        super().__init__(*args, **kwargs)
-
-
-def clean_phone(value, available_codes=None, default_code=None,
-                min_length=8, max_length=10, max_full_phone_length=15,
-                required=True):
+def clean_phone(
+    value,
+    available_codes=None,
+    default_code=None,
+    min_length=8,
+    max_length=10,
+    max_full_phone_length=15,
+    required=True,
+):
     if default_code is None:
         default_code = getattr(settings, 'DEFAULT_PHONE_COUNTRY_CODE', '7')
 
@@ -53,6 +45,9 @@ def clean_phone(value, available_codes=None, default_code=None,
 
     value = force_text(value)
     value = value.strip()
+
+    if not value and not required:
+        return value
 
     phone = None
     code = None
@@ -81,6 +76,6 @@ def clean_phone(value, available_codes=None, default_code=None,
 
     length = len(phone)
     if not (min_length <= length <= max_length):
-        raise ValidationError(ugettext('Incorrect phone'))
+        raise ValidationError(ugettext('Incorrect phone length'))
 
     return '+' + code + phone
