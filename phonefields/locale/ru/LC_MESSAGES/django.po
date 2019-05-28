@@ -974,3 +974,6 @@ msgstr "Некорректный номер телефона"
 #: __init__.py:291
 msgid "Unsupported country code"
 msgstr "Неизвестный код страны"
+
+msgid "Incorrect phone length"
+msgstr "Некорректная длина телефона"
