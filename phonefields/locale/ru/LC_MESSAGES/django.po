@@ -73,11 +73,11 @@ msgstr "ОАЭ"
 
 #: __init__.py:26
 msgid "Gaza Strip"
-msgstr ""
+msgstr "Сектор Газа"
 
 #: __init__.py:27
 msgid "West Bank"
-msgstr ""
+msgstr "Палестина"
 
 #: __init__.py:28
 msgid "Oman"
@@ -125,7 +125,7 @@ msgstr "Бангладеш"
 
 #: __init__.py:39
 msgid "Pitcairn Islands"
-msgstr ""
+msgstr "Острова Питкэрн"
 
 #: __init__.py:40
 msgid "Laos"
@@ -149,7 +149,7 @@ msgstr "Северная Корея"
 
 #: __init__.py:45
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Маршалловы Острова"
 
 #: __init__.py:46
 msgid "Micronesia"
@@ -157,7 +157,7 @@ msgstr "Микронезия"
 
 #: __init__.py:47
 msgid "Tokelau"
-msgstr ""
+msgstr "Токелау"
 
 #: __init__.py:48
 msgid "French Polynesia"
@@ -169,11 +169,11 @@ msgstr "Тувалу"
 
 #: __init__.py:50
 msgid "New Caledonia"
-msgstr ""
+msgstr "Новая Каледония"
 
 #: __init__.py:51
 msgid "Kiribati"
-msgstr ""
+msgstr "Кирибати"
 
 #: __init__.py:52
 msgid "Samoa"
@@ -181,19 +181,19 @@ msgstr "Самоа"
 
 #: __init__.py:53
 msgid "Niue"
-msgstr ""
+msgstr "Ниуэ"
 
 #: __init__.py:54
 msgid "Cook Islands"
-msgstr ""
+msgstr "Острова Кука"
 
 #: __init__.py:55
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "Уоллис и Футуна"
 
 #: __init__.py:56
 msgid "Palau"
-msgstr ""
+msgstr "Палау"
 
 #: __init__.py:57
 msgid "Fiji"
@@ -201,15 +201,15 @@ msgstr "Фиджи"
 
 #: __init__.py:58
 msgid "Vanuatu"
-msgstr ""
+msgstr "Вануату"
 
 #: __init__.py:59
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Соломоновы Острова"
 
 #: __init__.py:60
 msgid "Tonga"
-msgstr ""
+msgstr "Тонга"
 
 #: __init__.py:61
 msgid "Papua New Guinea"
@@ -217,7 +217,7 @@ msgstr "Папуа Новая Гвинея"
 
 #: __init__.py:62
 msgid "Nauru"
-msgstr ""
+msgstr "Науру"
 
 #: __init__.py:63
 msgid "Brunei"
@@ -229,15 +229,15 @@ msgstr "Антарктика"
 
 #: __init__.py:65
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Остров Норфолк"
 
 #: __init__.py:66
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Восточный Тимор"
 
 #: __init__.py:67
 msgid "Netherlands Antilles"
-msgstr ""
+msgstr "Нидерландские Антильские острова"
 
 #: __init__.py:68
 msgid "Uruguay"
@@ -245,7 +245,7 @@ msgstr "Уругвай"
 
 #: __init__.py:69
 msgid "Suriname"
-msgstr ""
+msgstr "Суринам"
 
 #: __init__.py:70
 msgid "Paraguay"
@@ -265,7 +265,7 @@ msgstr "Боливия"
 
 #: __init__.py:74
 msgid "Saint Barthelemy"
-msgstr ""
+msgstr "Сен-Бартелеми (Карибы)"
 
 #: __init__.py:75
 msgid "Haiti"
@@ -273,7 +273,7 @@ msgstr "Гаити"
 
 #: __init__.py:76
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Сен-Пьер и Микелон"
 
 #: __init__.py:77
 msgid "Panama"
@@ -281,7 +281,7 @@ msgstr "Панама"
 
 #: __init__.py:78
 msgid "Costa Rica"
-msgstr ""
+msgstr "Коста-Рика"
 
 #: __init__.py:79
 msgid "Nicaragua"
@@ -293,7 +293,7 @@ msgstr "Гондурас"
 
 #: __init__.py:81
 msgid "El Salvador"
-msgstr ""
+msgstr "Сальвадор"
 
 #: __init__.py:82
 msgid "Guatemala"
@@ -305,7 +305,7 @@ msgstr "Белиз"
 
 #: __init__.py:84
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Фолклендские острова"
 
 #: __init__.py:85
 msgid "Liechtenstein"
@@ -433,219 +433,219 @@ msgstr "Гренландия"
 
 #: __init__.py:116
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Фарерские острова"
 
 #: __init__.py:117
 msgid "Aruba"
-msgstr ""
+msgstr "Аруба"
 
 #: __init__.py:118
 msgid "Eritrea"
-msgstr ""
+msgstr "Эритрея"
 
 #: __init__.py:119
 msgid "Saint Helena"
-msgstr ""
+msgstr "Остров Святой Елены"
 
 #: __init__.py:120
 msgid "Comoros"
-msgstr ""
+msgstr "Коморы"
 
 #: __init__.py:121
 msgid "Swaziland"
-msgstr ""
+msgstr "Эсватини"
 
 #: __init__.py:122
 msgid "Botswana"
-msgstr ""
+msgstr "Ботсвана"
 
 #: __init__.py:123
 msgid "Lesotho"
-msgstr ""
+msgstr "Лесото"
 
 #: __init__.py:124
 msgid "Malawi"
-msgstr ""
+msgstr "Малави"
 
 #: __init__.py:125
 msgid "Namibia"
-msgstr ""
+msgstr "Намибия"
 
 #: __init__.py:126
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Зимбабве"
 
 #: __init__.py:127
 msgid "Mayotte"
-msgstr ""
+msgstr "Майотта"
 
 #: __init__.py:128
 msgid "Madagascar"
-msgstr ""
+msgstr "Мадагаскар"
 
 #: __init__.py:129
 msgid "Zambia"
-msgstr ""
+msgstr "Замбия"
 
 #: __init__.py:130
 msgid "Mozambique"
-msgstr ""
+msgstr "Мозамбик"
 
 #: __init__.py:131
 msgid "Burundi"
-msgstr ""
+msgstr "Бурунди"
 
 #: __init__.py:132
 msgid "Uganda"
-msgstr ""
+msgstr "Уганда"
 
 #: __init__.py:133
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #: __init__.py:134
 msgid "Kenya"
-msgstr ""
+msgstr "Кения"
 
 #: __init__.py:135
 msgid "Djibouti"
-msgstr ""
+msgstr "Джибути"
 
 #: __init__.py:136
 msgid "Somalia"
-msgstr ""
+msgstr "Сомали"
 
 #: __init__.py:137
 msgid "Ethiopia"
-msgstr ""
+msgstr "Эфиопия"
 
 #: __init__.py:138
 msgid "Rwanda"
-msgstr ""
+msgstr "Руанда"
 
 #: __init__.py:139
 msgid "Sudan"
-msgstr ""
+msgstr "Судан"
 
 #: __init__.py:140
 msgid "Seychelles"
-msgstr ""
+msgstr "Сейшельские Острова"
 
 #: __init__.py:141
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Гвинея-Бисау"
 
 #: __init__.py:142
 msgid "Angola"
-msgstr ""
+msgstr "Ангола"
 
 #: __init__.py:143
 msgid "Democratic Republic of the Congo"
-msgstr ""
+msgstr "Демократическая Республика Конго"
 
 #: __init__.py:144
 msgid "Republic of the Congo"
-msgstr ""
+msgstr "Республика Конго"
 
 #: __init__.py:145
 msgid "Gabon"
-msgstr ""
+msgstr "Габон"
 
 #: __init__.py:146
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Экваториальная Гвинея"
 
 #: __init__.py:147
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Сан-Томе и Принсипи"
 
 #: __init__.py:148
 msgid "Cape Verde"
-msgstr ""
+msgstr "Кабо-Верде"
 
 #: __init__.py:149
 msgid "Cameroon"
-msgstr ""
+msgstr "Камерун"
 
 #: __init__.py:150
 msgid "Central African Republic"
-msgstr ""
+msgstr "Центральноафриканская Республика"
 
 #: __init__.py:151
 msgid "Chad"
-msgstr ""
+msgstr "Чад"
 
 #: __init__.py:152
 msgid "Nigeria"
-msgstr ""
+msgstr "Нигерия"
 
 #: __init__.py:153
 msgid "Ghana"
-msgstr ""
+msgstr "Гана"
 
 #: __init__.py:154
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Сьерра-Леоне"
 
 #: __init__.py:155
 msgid "Liberia"
-msgstr ""
+msgstr "Либерия"
 
 #: __init__.py:156
 msgid "Mauritius"
-msgstr ""
+msgstr "Маврикий"
 
 #: __init__.py:157
 msgid "Benin"
-msgstr ""
+msgstr "Бенин"
 
 #: __init__.py:158
 msgid "Togo"
-msgstr ""
+msgstr "Того"
 
 #: __init__.py:159
 msgid "Niger"
-msgstr ""
+msgstr "Нигер"
 
 #: __init__.py:160
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Буркина-Фасо"
 
 #: __init__.py:161
 msgid "Ivory Coast"
-msgstr ""
+msgstr "Кот-д’Ивуар"
 
 #: __init__.py:162
 msgid "Guinea"
-msgstr ""
+msgstr "Гвинея"
 
 #: __init__.py:163
 msgid "Mali"
-msgstr ""
+msgstr "Мали"
 
 #: __init__.py:164
 msgid "Mauritania"
-msgstr ""
+msgstr "Мавритания"
 
 #: __init__.py:165
 msgid "Senegal"
-msgstr ""
+msgstr "Сенегал"
 
 #: __init__.py:166
 msgid "Gambia"
-msgstr ""
+msgstr "Гамбия"
 
 #: __init__.py:167
 msgid "Libya"
-msgstr ""
+msgstr "Ливия"
 
 #: __init__.py:168
 msgid "Tunisia"
-msgstr ""
+msgstr "Тунис"
 
 #: __init__.py:169
 msgid "Algeria"
-msgstr ""
+msgstr "Алжир"
 
 #: __init__.py:170
 msgid "Morocco"
@@ -721,7 +721,7 @@ msgstr "Австралия"
 
 #: __init__.py:188
 msgid "Christmas Island"
-msgstr ""
+msgstr "Остров Рождества (Австралия)"
 
 #: __init__.py:189
 msgid "Cocos (Keeling) Islands"
@@ -865,15 +865,15 @@ msgstr "Канада"
 
 #: __init__.py:224
 msgid "American Samoa"
-msgstr ""
+msgstr "Американское Самоа"
 
 #: __init__.py:225
 msgid "Anguilla"
-msgstr ""
+msgstr "Ангилья"
 
 #: __init__.py:226
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Антигуа и Барбуда"
 
 #: __init__.py:227
 msgid "Bahamas"
@@ -885,11 +885,11 @@ msgstr "Барбадос"
 
 #: __init__.py:229
 msgid "Bermuda"
-msgstr ""
+msgstr "Бермудские Острова"
 
 #: __init__.py:230
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "Виргинские Острова (Великобритания)"
 
 #: __init__.py:231
 msgid "Cayman Islands"
@@ -901,7 +901,7 @@ msgstr "Доминикана"
 
 #: __init__.py:233
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Доминиканская Республика"
 
 #: __init__.py:234
 msgid "Grenada"
@@ -917,27 +917,27 @@ msgstr "Ямайка"
 
 #: __init__.py:237
 msgid "Montserrat"
-msgstr ""
+msgstr "Монтсеррат"
 
 #: __init__.py:238
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Северные Марианские Острова"
 
 #: __init__.py:239
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Сент-Китс и Невис"
 
 #: __init__.py:240
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Сент-Люсия"
 
 #: __init__.py:241
 msgid "Saint Martin"
-msgstr ""
+msgstr "Сен-Мартен"
 
 #: __init__.py:242
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Сент-Винсент и Гренадины"
 
 #: __init__.py:243
 msgid "Trinidad and Tobago"
@@ -945,11 +945,11 @@ msgstr "Тринидада и Тобаго"
 
 #: __init__.py:244
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Теркс и Кайкос"
 
 #: __init__.py:245
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "Виргинские Острова (США)"
 
 #: __init__.py:246
 msgid "Western Sahara"
@@ -957,7 +957,7 @@ msgstr "Западная Сахара"
 
 #: __init__.py:247
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "Британская Территория в Индийском Океане"
 
 #: __init__.py:248
 msgid "Jersey"

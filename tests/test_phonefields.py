@@ -38,6 +38,12 @@ def test_form():
     assert Form({'phone': '+7 999 233-11-22'}).is_valid()
 
 
+def test_form2():
+    class Form(forms.Form):
+        phone = FullPhoneFormField(required=True)
+    assert Form({'phone': '+79162255059'}).is_valid()
+
+
 @pytest.mark.parametrize('required,should_be_valid', [
     (True, False),
     (False, True),
