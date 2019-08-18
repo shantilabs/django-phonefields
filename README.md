@@ -5,7 +5,7 @@ django-phonefields
 [![Build Status](https://travis-ci.org/shantilabs/django-phonefields.svg?branch=master)](https://travis-ci.org/shantilabs/django-phonefields)
 
 
-Simple django form and model fields that performs validation and normalizatio of phone numbers. Tested with Python 2.7, 3.6 and the latest django in 1.x and 2.x branches.
+Simple django form and model fields that performs validation and normalizatio of phone numbers. Tested with Python 3.6, 3.7 and the latest django in 1.x and 2.x branches.
 
 
 Install:
