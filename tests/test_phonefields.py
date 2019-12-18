@@ -7,13 +7,15 @@ from test_app.models import SampleModelUSA, SampleModel, SampleModelBlank
 
 
 @pytest.mark.parametrize('value,expected', (
-    (u'79254525700', u'+79254525700'),
-    (b'9161234567', u'+79161234567'),
-    ('89161234567', u'+79161234567'),
-    ('+7(916)1234567', u'+79161234567'),
-    ('(916)1234567', u'+79161234567'),
-    (u' 8(916)-123-45-67 ', u'+79161234567'),
-    (u'+37412345678', u'+37412345678'),
+    ('79254525700', '+79254525700'),
+    (b'9161234567', '+79161234567'),
+    ('89161234567', '+79161234567'),
+    ('+7(916)1234567', '+79161234567'),
+    ('(916)1234567', '+79161234567'),
+    (' 8(916)-123-45-67 ', '+79161234567'),
+    ('+37412345678', '+37412345678'),
+    ('971581700090', '+971581700090'),
+    ('4915002000684', '+4915002000684'),
 ))
 def test_validation(value, expected):
     """
@@ -90,20 +92,6 @@ def test_model_blank_field():
     """
     obj = SampleModelBlank.objects.create(phone=' ')
     assert obj.phone == ''
-
-
-@pytest.mark.django_db
-def test_deconstruct():
-    """
-    Test field deconstruction
-    """
-    original = FullPhoneDbField(default='1', max_phone_length=8, min_phone_length=1)
-    name, path, args, kwargs = original.deconstruct()
-
-    copy = FullPhoneDbField(*args, **kwargs)
-
-    assert original.validator_options == copy.validator_options
-    assert original.max_length == copy.max_length
 
 
 @pytest.mark.django_db

@@ -7,14 +7,17 @@ from django.utils.translation import ugettext
 
 from .codes import all_codes
 
+#  E.164 permits a maximum length of 15 digits for the complete
+#  international phone number consisting of the country code,
+#  the national routing code (area code), and the subscriber number
+max_phone_length = 15
+min_bare_phone_length = 8
+
 
 class PhoneFieldValidator:
     OPTIONS = (
         'available_codes',
         'default_code',
-        'min_phone_length',
-        'max_phone_length',
-        'max_full_phone_length',
         'required',
     )
 
@@ -25,15 +28,7 @@ class PhoneFieldValidator:
         return clean_phone(value, **self.options)
 
 
-def clean_phone(
-    value,
-    available_codes=None,
-    default_code=None,
-    min_length=8,
-    max_length=10,
-    max_full_phone_length=15,
-    required=True,
-):
+def clean_phone(value, available_codes=None, default_code=None, required=True):
     if default_code is None:
         default_code = getattr(settings, 'DEFAULT_PHONE_COUNTRY_CODE', '7')
 
@@ -49,33 +44,31 @@ def clean_phone(
     if not value and not required:
         return value
 
-    phone = None
     code = None
+    bare_phone = None
 
-    has_country_code = value.startswith('+')
-    value = value.lstrip('+')
-    value = re.sub(r'[^\d]', '', value)
-
-    if not value or len(value) > max_full_phone_length:
-        raise ValidationError(ugettext('Incorrect phone'))
+    value = re.sub(r'[^\d]', '', value.lstrip('+'))
 
     if value.startswith(default_code):
-        phone = value[len(default_code):]
+        bare_phone = value[len(default_code):]
         code = default_code
-    elif not has_country_code and (value.startswith('8') or value.startswith('9')):
-        phone = value[1:] if value.startswith('8') else value
+    elif value.startswith('9') and len(value) == 10:  # XXX:
+        bare_phone = value
+        code = default_code
+    elif value.startswith('8'):
+        bare_phone = value[1:]
         code = default_code
     else:
         for c in available_codes:
             if value.startswith(c):
-                phone = value[len(c):]
+                bare_phone = value[len(c):]
                 code = c
                 break
-        if not phone:
+        if not bare_phone:
             raise ValidationError(ugettext('Unsupported country code'))
 
-    length = len(phone)
-    if not (min_length <= length <= max_length):
+    result = '+' + code + bare_phone
+    if len(bare_phone) < min_bare_phone_length or len(result) > max_phone_length:
         raise ValidationError(ugettext('Incorrect phone length'))
 
-    return '+' + code + phone
+    return result
