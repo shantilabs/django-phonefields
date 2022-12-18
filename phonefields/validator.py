@@ -2,8 +2,8 @@ import re
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.utils.encoding import force_text
-from django.utils.translation import ugettext
+from django.utils.encoding import force_str
+from django.utils.translation import gettext
 
 from .codes import all_codes
 
@@ -38,7 +38,7 @@ def clean_phone(value, available_codes=None, default_code=None, required=True):
     if not value and not required:
         return value
 
-    value = force_text(value)
+    value = force_str(value)
     value = value.strip()
 
     if not value and not required:
@@ -65,10 +65,10 @@ def clean_phone(value, available_codes=None, default_code=None, required=True):
                 code = c
                 break
         if not bare_phone:
-            raise ValidationError(ugettext('Unsupported country code'))
+            raise ValidationError(gettext('Unsupported country code'))
 
     result = '+' + code + bare_phone
     if len(bare_phone) < min_bare_phone_length or len(result) > max_phone_length:
-        raise ValidationError(ugettext('Incorrect phone length'))
+        raise ValidationError(gettext('Incorrect phone length'))
 
     return result
